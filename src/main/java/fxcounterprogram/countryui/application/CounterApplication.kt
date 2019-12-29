@@ -3,6 +3,8 @@ package fxcounterprogram.countryui.application
 import javafx.application.Application
 import javafx.application.Platform
 import javafx.stage.Stage
+import lk.vivoxalabs.customstage.CustomStage
+import lk.vivoxalabs.customstage.CustomStageBuilder
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.context.ApplicationEvent
 import org.springframework.context.ConfigurableApplicationContext
@@ -16,7 +18,7 @@ open class CounterApplication : Application() {
     }
 
     override fun start(stage: Stage?) {
-        applicationContext.publishEvent(StageReadyEvent(stage!!))
+        applicationContext.publishEvent(stage!!)
     }
 
     override fun stop() {

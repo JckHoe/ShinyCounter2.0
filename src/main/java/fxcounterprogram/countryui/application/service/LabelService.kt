@@ -1,5 +1,6 @@
 package fxcounterprogram.countryui.application.service
 
+import javafx.geometry.Pos
 import javafx.scene.Node
 import javafx.scene.control.Label
 import javafx.scene.text.Font
@@ -17,7 +18,7 @@ class LabelService : BaseService(){
     }
 
     fun getFont2(): Font{
-        return Font.font("Helvetica", FontWeight.BOLD, 30.0)
+        return Font.font("Arial", FontWeight.BOLD, 30.0)
     }
 
     fun getFont3(): Font{
@@ -30,6 +31,7 @@ class LabelService : BaseService(){
 
     fun getNewLabel(list: ArrayList<Node>): Label{
         val lbl = Label()
+        lbl.alignment = Pos.CENTER
         addToNodeList(lbl, list)
         return lbl
     }

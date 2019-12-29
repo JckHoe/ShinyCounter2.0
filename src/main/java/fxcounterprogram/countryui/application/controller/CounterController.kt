@@ -1,5 +1,7 @@
 package fxcounterprogram.countryui.application.controller
 
+import fxcounterprogram.countryui.application.service.ButtonService
+import fxcounterprogram.countryui.application.service.CacheService
 import fxcounterprogram.countryui.application.service.LabelService
 import fxcounterprogram.countryui.application.service.PaneService
 import javafx.fxml.FXML
@@ -18,6 +20,12 @@ class CounterController : BaseController {
     @Autowired
     private lateinit var paneService: PaneService
 
+    @Autowired
+    private lateinit var cacheService: CacheService
+
+    @Autowired
+    private lateinit var buttonService: ButtonService
+
     @FXML
     var gPane: GridPane? = null
 
@@ -28,9 +36,34 @@ class CounterController : BaseController {
     override fun initialize() {
         val lblWelcome = labelService.getNewLabel(nodes)
         lblWelcome.text = "Number of Encounters"
-        lblWelcome.alignment = Pos.CENTER
         lblWelcome.font = labelService.getFont1()
+
+        val lblValue = labelService.getNewLabel(nodes)
+        lblValue.font = labelService.getFont2()
+        lblValue.text = cacheService.getCount().toString()
+
+        val addBtn = buttonService.getButton(nodes)
+        buttonService.actionAddCount(addBtn, lblValue)
+        addBtn.text = "Add Count +"
+        addBtn.id = "dark-blue"
+
+        val minusBtn = buttonService.getButton(nodes)
+        buttonService.actionMinusCount(minusBtn, lblValue)
+        minusBtn.text = "Minus Count -"
+        minusBtn.id = "dark-blue"
+
+        val resetBtn = buttonService.getButton(nodes)
+        buttonService.actionResetCount(resetBtn, lblValue)
+        resetBtn.text = "Reset Count"
+        resetBtn.id = "iphone"
+
+
+        //Arranging Nodes to pane
         gPane?.add(lblWelcome, 0, 0)
+        gPane?.add(lblValue, 0, 1)
+        gPane?.add(addBtn, 0, 3)
+        gPane?.add(minusBtn, 0, 4)
+        gPane?.add(resetBtn, 0, 5)
 
         //Always Call to Build Pane
         buildPane()
