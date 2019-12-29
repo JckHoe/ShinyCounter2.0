@@ -36,10 +36,7 @@ open class MainStageInitializer(@Value("\${spring.application.ui.title}") applic
 
         scene.stylesheets.add(styleResource.url.toString())
         stage.scene = scene
-        stage.icons
-                .add(
-                        Image(iconResource.url.toString())
-                )
+        stage.icons.add(Image(iconResource.url.toString()))
 //        stage.isFullScreen = true
 //        stage.isMaximized = true
         stage.show()

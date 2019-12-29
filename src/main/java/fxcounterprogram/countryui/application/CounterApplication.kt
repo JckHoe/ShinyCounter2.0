@@ -27,7 +27,7 @@ open class CounterApplication : Application() {
     class StageReadyEvent( source: Any) : ApplicationEvent(source) {
 
         fun getStage(): Stage{
-            return getSource() as Stage;
+            return getSource() as Stage
         }
     }
 }

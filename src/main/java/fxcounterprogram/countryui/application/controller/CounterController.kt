@@ -57,7 +57,6 @@ class CounterController : BaseController {
         resetBtn.text = "Reset Count"
         resetBtn.id = "iphone"
 
-
         //Arranging Nodes to pane
         gPane?.add(lblWelcome, 0, 0)
         gPane?.add(lblValue, 0, 1)
